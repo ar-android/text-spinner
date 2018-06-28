@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Text Spinner</title>
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>Welcome to text spinner.</h1>
+    <div>
+      <h2># Basic Spinner </h2>
+      <p>Generate multiple text with format {word + | + (the next word variant)}.</p>
+      <textarea id="text" class="input-text my-3" placeholder="Example : {Aku|Saya|Gue} {bangga|bahagia|bersyukur} {lahir|dilahirkan} di {Indonesia|negeri ini}."></textarea>
+      <button id="generate" class="btn">Generate</button>
+      <button id="generate-example" class="btn">Generate Example</button>
+      <textarea id="result" class="input-text my-3 result"></textarea>
+    </div>
+  </div>
+
+  <script src="text-spinner.min.js"></script>
+</body>
+</html>
