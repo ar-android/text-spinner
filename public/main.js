@@ -24,6 +24,7 @@ function generate(text) {
 }
 
 function generate_texts(text) {
+    console.log(text);
     var pattern = /({[^\}]+})/gi;
     var result = text.match(pattern);
     var length = get_the_longest_word(result);
@@ -35,7 +36,11 @@ function generate_texts(text) {
             result_text = result_text.replace(item_result, "$");
             var item_result_split = item_result.split("|")
             var item = item_result_split[i];
-            var item_text = item_result_split.shift();
+            // var item_text = item_result_split.shift();
+
+            // let items = item_result_split;
+            var item_text = get_rand_array(item_result_split);//items[Math.floor(Math.random()*items.length)];
+
             if (item) {
                 item_text = item;
             }
@@ -61,15 +66,31 @@ function get_the_longest_word(array) {
     return length;
 }
 
+function get_rand_array(items) {
+    return items[Math.floor(Math.random()*items.length)];
+}
+
+function generate_advance() {
+    let prefix = get_element("text-prefix").value.split(",");
+    let spintax = generate_texts(get_element("text-spintax").value);
+    let suffix = get_element("text-suffix").value.split("\n");
+
+    let start = get_rand_array(prefix);
+    let middle = get_rand_array(spintax);
+    let end = get_rand_array(suffix);
+
+    get_element("result-prefix").value = start + " " + middle + " " + end;
+}
+
 click("generate", function() {
     var text = get_element("text").value;
-    get_element("generate-example").innerHTML = label_default;
+    get_element("generate-example").innerHTML = "Generate Example";
     if (text) {
         generate(text);
     }
 })
 
-click("generate-example", function(el) {
+click("generate-example", function() {
     var label = get_element("generate-example").innerHTML;
     var label_default = "Generate Example";
     if (label == label_default) {
@@ -82,6 +103,31 @@ click("generate-example", function(el) {
         get_element("text").value = "";
         get_element("result").style.display = "none";
     }
-
 })
+
+click("generate-prefix", function() {
+    get_element("generate-prefix-example").innerHTML = "Clear";
+    generate_advance();
+})
+
+
+click("generate-prefix-example", function() {
+    var label = get_element("generate-prefix-example").innerHTML;
+    var label_default = "Generate Example";
+    if (label == label_default) {
+        get_element("generate-prefix-example").innerHTML = "Clear";
+        get_element("text-prefix").value = "Ini string, contoh string, string ok";
+        get_element("text-spintax").value = "{aku|sayang|gue} {anak|orang} {nusantara|indonesia}";
+        get_element("text-suffix").value = "Ini string\ncontoh string\nstring ok";
+
+        generate_advance();
+
+    }else{
+        get_element("generate-prefix-example").innerHTML = label_default;
+        get_element("text-prefix").value = "";
+        get_element("text-spintax").value = "";
+        get_element("text-suffix").value = "";
+    }
+})
+
 

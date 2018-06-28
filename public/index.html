@@ -3,22 +3,55 @@
 <head>
   <title>Text Spinner</title>
   <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 
   <div class="container">
     <h1>Welcome to text spinner.</h1>
-    <div>
+
+    <!-- Content Basic Spinner -->
+    <div class="content">
       <h2># Basic Spinner </h2>
+      <hr>
       <p>Generate multiple text with format {word + | + (the next word variant)}.</p>
-      <textarea id="text" class="input-text my-3" placeholder="Example : {Aku|Saya|Gue} {bangga|bahagia|bersyukur} {lahir|dilahirkan} di {Indonesia|negeri ini}."></textarea>
-      <button id="generate" class="btn">Generate</button>
-      <button id="generate-example" class="btn">Generate Example</button>
-      <textarea id="result" class="input-text my-3 result"></textarea>
+      <div class="row">
+        <div class="col-12">
+          <textarea id="text" class="input-text" placeholder="Example : {Aku|Saya|Gue} {bangga|bahagia|bersyukur} {lahir|dilahirkan} di {Indonesia|negeri ini}."></textarea>
+          <button id="generate" class="btn">Generate</button>
+          <button id="generate-example" class="btn">Generate Example</button>
+          <textarea id="result" class="input-text result"></textarea>
+        </div>
+      </div>
     </div>
+
+    <!-- Content Prefix Spinner -->
+    <div class="content">
+      <h2># Advanced Spinner </h2>
+      <hr>
+      <p>Generate multiple text with format prefix + spintext + suffix.</p>
+      <br>
+      <div class="row">
+        <div class="col-6">
+          <h4>Input prefix : </h4>
+          <textarea id="text-prefix" class="input-text min-h-100" placeholder="Example : Ini string, contoh string, string ok."></textarea>
+          <h4>Input spintax : </h4>
+          <textarea id="text-spintax" class="input-text min-h-100" placeholder="Example : {aku|sayang|gue} {anak|orang} {nusantara|indonesia}."></textarea>
+          <h4>Suffix : </h4>
+          <textarea id="text-suffix" class="input-text min-h-100" placeholder="Example :&#10;&#10;Ini string&#10;contoh string&#10;string ok&#10;"></textarea>
+        </div>
+        <div class="col-6">
+          <h4>Result</h4>
+          <textarea id="result-prefix" class="input-text col-12 h-80" placeholder="Example Result :  string ok gue anak indonesia contoh string"></textarea>
+        </div>
+      </div>
+      <button id="generate-prefix" class="btn">Generate</button>
+      <button id="generate-prefix-example" class="btn">Generate Example</button>
+    </div>
+
   </div>
 
-  <script src="text-spinner.min.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
